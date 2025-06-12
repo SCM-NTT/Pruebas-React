@@ -7,6 +7,8 @@
   },
   "main": "lib/index.js",
   "scripts": {
+    "serve": "gulp serve",
+    "tsc":"tsc",
     "build": "gulp bundle",
     "clean": "gulp clean",
     "test": "gulp test"
