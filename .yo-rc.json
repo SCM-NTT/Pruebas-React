@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.16.0",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "pruebas-react",
+    "libraryId": "7bdc91f1-6f0a-431a-87cd-caadbfe06901",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "pruebas-react",
+    "solutionShortDescription": "pruebas-react description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

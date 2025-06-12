@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "pruebas-react-client-side-solution",
+    "id": "7bdc91f1-6f0a-431a-87cd-caadbfe06901",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "pruebas-react description"
+      },
+      "longDescription": {
+        "default": "pruebas-react description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "pruebas-react Feature",
+        "description": "The feature that activates elements of the pruebas-react solution.",
+        "id": "9dea969d-eb11-4673-a3c8-47ae29685851",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/pruebas-react.sppkg"
+  }
+}
