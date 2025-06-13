@@ -32,3 +32,22 @@
     }
   }
 }
+.button{
+  min-width: 48px;
+  min-height: 24px;
+  outline-width: 2px;
+  outline-color: #000000;
+  background-color: #007bFF;
+  color: #ffffff;
+  border-radius: 3px;
+}
+
+.button + .button{
+  margin-left: 3rem;
+}
+
+.container{
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
