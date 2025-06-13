@@ -9,10 +9,19 @@
           "manifest": "./src/webparts/helloWorld/HelloWorldWebPart.manifest.json"
         }
       ]
+    },
+    "hola-mundo-hook-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/holaMundoHook/HolaMundoHookWebPart.js",
+          "manifest": "./src/webparts/holaMundoHook/HolaMundoHookWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "HelloWorldWebPartStrings": "lib/webparts/helloWorld/loc/{locale}.js"
+    "HelloWorldWebPartStrings": "lib/webparts/helloWorld/loc/{locale}.js",
+    "HolaMundoHookWebPartStrings": "lib/webparts/holaMundoHook/loc/{locale}.js"
   }
 }
