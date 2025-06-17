@@ -29,7 +29,8 @@ export default class HolaMundoHookWebPart extends BaseClientSideWebPart<IHolaMun
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName
+        userDisplayName: this.context.pageContext.user.displayName,
+        graphClient:this.context.msGraphClientFactory.getClient('3')
       }
     );
 
