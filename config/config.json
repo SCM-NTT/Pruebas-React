@@ -17,11 +17,20 @@
           "manifest": "./src/webparts/holaMundoHook/HolaMundoHookWebPart.manifest.json"
         }
       ]
+    },
+    "formulario-prueba-correos-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/formularioPruebaCorreos/FormularioPruebaCorreosWebPart.js",
+          "manifest": "./src/webparts/formularioPruebaCorreos/FormularioPruebaCorreosWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
     "HelloWorldWebPartStrings": "lib/webparts/helloWorld/loc/{locale}.js",
-    "HolaMundoHookWebPartStrings": "lib/webparts/holaMundoHook/loc/{locale}.js"
+    "HolaMundoHookWebPartStrings": "lib/webparts/holaMundoHook/loc/{locale}.js",
+    "FormularioPruebaCorreosWebPartStrings": "lib/webparts/formularioPruebaCorreos/loc/{locale}.js"
   }
 }

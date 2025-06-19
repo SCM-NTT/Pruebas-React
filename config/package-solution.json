@@ -42,7 +42,6 @@
         "resource": "Microsoft Graph",
         "scope": "Mail.Send"
       }
-
     ]
   },
   "paths": {
