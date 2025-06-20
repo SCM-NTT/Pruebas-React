@@ -18,9 +18,9 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
     "group": { "default": "Advanced" },
-    "title": { "default": "HolaMundoHook" },
+    "title": { "default": "SCM_HolaMundoHook" },
     "description": { "default": "HolaMundoHook description" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "AddReaction",
     "properties": {
       "description": "HolaMundoHook"
     }

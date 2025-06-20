@@ -1,6 +1,6 @@
 {
   "name": "pruebas-react",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "private": true,
   "engines": {
     "node": ">=22.14.0 < 23.0.0"
@@ -10,7 +10,8 @@
     "serve": "gulp serve",
     "tsc": "tsc",
     "gulp-certificate": "gulp trust-dev-cert",
-    "build": "gulp bundle",
+    "build": "gulp bundle --ship",
+    "export": "gulp package-solution --ship",
     "clean": "gulp clean",
     "test": "gulp test"
   },

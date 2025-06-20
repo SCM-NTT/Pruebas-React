@@ -7,6 +7,7 @@ import type { IFormularioPruebaCorreosProps } from './IFormularioPruebaCorreosPr
 const useFormularioPruebaCorreos: React.FC<IFormularioPruebaCorreosProps> = ({ graphClient }) => {
   //variables
   const [userMail, setUserMail] = useState<string>('');
+  const [remitenteMail,setRemitenteMail]=useState<string>('');
   const [userName, setUserName] = useState<string>('');
   const [asunto, setAsunto] = useState<string>('');
   const [message, setMessage] = useState<string>('');
@@ -29,6 +30,7 @@ const useFormularioPruebaCorreos: React.FC<IFormularioPruebaCorreosProps> = ({ g
 
         //Seteamos los valores que despues usaremos (se guardan en la variabla asociada a la función)
         setUserName(response.displayName);
+        setRemitenteMail(response.mail);
       }
       catch (error) {
         setError(error || "Error al conseguir graph api");
@@ -63,8 +65,12 @@ const useFormularioPruebaCorreos: React.FC<IFormularioPruebaCorreosProps> = ({ g
         saveToSentItems: 'true',
       };
       try {
+        if(!remitenteMail){
+          throw new Error("esta cuenta no dispone de mailbox para poder enviar el correo");
+        }
+
         if(!userMail){
-          throw new Error("E-Mail vacío");
+          throw new Error("E-Mail de destino vacío");
         }
         //comprobamos que contenga todos los campos
         if (!asunto) {
@@ -80,8 +86,8 @@ const useFormularioPruebaCorreos: React.FC<IFormularioPruebaCorreosProps> = ({ g
           setOk(true);
         }
       }
-      catch (error) {
-        setError(error.message || "error desconocido al enviar el correo");
+      catch (er) {
+        setError(er.message || "error desconocido al enviar el correo");
         setOk(false);
       }
       finally {
@@ -105,8 +111,10 @@ const useFormularioPruebaCorreos: React.FC<IFormularioPruebaCorreosProps> = ({ g
   return (
     <div>
       <h1>Bienvenido {userName}</h1>
+      <label>E-Mail Remitente: </label>
+      <label>{remitenteMail}</label>
       <br/>
-      <label>E-Mail:</label>
+      <label>E-Mail de destino: </label>
       <input
         type='Text'
         className={styles.text}
@@ -116,7 +124,7 @@ const useFormularioPruebaCorreos: React.FC<IFormularioPruebaCorreosProps> = ({ g
         id='email'
       />
       <br/>
-      <label>Asunto:</label>
+      <label>Asunto: </label>
       <input
         className={styles.text}
         type='Text'
@@ -126,7 +134,7 @@ const useFormularioPruebaCorreos: React.FC<IFormularioPruebaCorreosProps> = ({ g
         id='asunto'
       />
       <br/>
-      <label>Mensaje:</label>
+      <label>Mensaje: </label>
       <br/>
       <textarea
         className={styles.areaText}
@@ -137,8 +145,8 @@ const useFormularioPruebaCorreos: React.FC<IFormularioPruebaCorreosProps> = ({ g
         wrap='soft'
       />
 
-      {ok && <p>El correo se ha enviado satisfactoriamente</p>}
-      {error && <p>El correo no se pudo mandar debido a {error}</p>}
+      {ok && <p><strong>El correo se ha enviado satisfactoriamente</strong></p>}
+      {error && <p>El correo no se pudo mandar debido a <strong>&quot; {error} &quot;</strong></p>}
       <br/>
       <button className={styles.button} onClick={mandarCorreo}>Enviar</button>
     </div>

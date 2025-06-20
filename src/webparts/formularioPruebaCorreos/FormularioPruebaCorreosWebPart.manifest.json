@@ -18,9 +18,9 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
     "group": { "default": "Advanced" },
-    "title": { "default": "FormularioPruebaCorreos" },
+    "title": { "default": "SCM_FormularioPruebaCorreos" },
     "description": { "default": "FormularioPruebaCorreos description" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "AccountActivity",
     "properties": {
       "description": "FormularioPruebaCorreos"
     }
