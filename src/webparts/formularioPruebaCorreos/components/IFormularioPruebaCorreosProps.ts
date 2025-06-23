@@ -6,4 +6,7 @@ export interface IFormularioPruebaCorreosProps {
   hasTeamsContext: boolean;
   userDisplayName: string;
   graphClient:Promise<MSGraphClientV3>;
+  checkDefaultMailReciever: boolean;
+  checkShowRemitent:boolean;
+  defaultMailReciever:string;
 }

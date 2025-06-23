@@ -22,7 +22,10 @@
     "description": { "default": "FormularioPruebaCorreos description" },
     "officeFabricIconFontName": "AccountActivity",
     "properties": {
-      "description": "FormularioPruebaCorreos"
+      "description": "FormularioPruebaCorreos",
+      "defaultMailReciever":"ejemplo@ejemplo.com",
+      "checkDefaultMailReciever": true,
+      "checkShowRemitent":true
     }
   }]
 }

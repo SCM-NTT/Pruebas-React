@@ -3,6 +3,7 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   type IPropertyPaneConfiguration,
+  PropertyPaneCheckbox,
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
@@ -13,6 +14,9 @@ import useFormularioPruebaCorreos from './components/FormularioPruebaCorreos';
 import { IFormularioPruebaCorreosProps } from './components/IFormularioPruebaCorreosProps';
 
 export interface IFormularioPruebaCorreosWebPartProps {
+  defaultMailReciever: string;
+  checkDefaultMailReciever: boolean;
+  checkShowRemitent: boolean;
   description: string;
 }
 
@@ -30,7 +34,11 @@ export default class FormularioPruebaCorreosWebPart extends BaseClientSideWebPar
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
         userDisplayName: this.context.pageContext.user.displayName,
-        graphClient:this.context.msGraphClientFactory.getClient('3')
+        graphClient: this.context.msGraphClientFactory.getClient('3'),
+        checkDefaultMailReciever: this.properties.checkDefaultMailReciever,
+        checkShowRemitent: this.properties.checkShowRemitent,
+        defaultMailReciever: this.properties.defaultMailReciever,
+
       }
     );
 
@@ -111,6 +119,15 @@ export default class FormularioPruebaCorreosWebPart extends BaseClientSideWebPar
               groupFields: [
                 PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel
+                }),
+                PropertyPaneCheckbox('checkDefaultMailReciever', {
+                  text: strings.checkDefaultMailReciever
+                }),
+                PropertyPaneCheckbox('checkShowRemitent', {
+                  text: strings.checkShowRemitent
+                }),
+                PropertyPaneTextField('defaultMailReciever', {
+                  label: strings.defaultMailReciever
                 })
               ]
             }

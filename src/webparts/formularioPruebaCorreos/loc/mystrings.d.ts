@@ -1,4 +1,7 @@
 declare interface IFormularioPruebaCorreosWebPartStrings {
+  checkDefaultMailReciever: string;
+  checkShowRemitent: string;
+  defaultMailReciever: string | undefined;
   PropertyPaneDescription: string;
   BasicGroupName: string;
   DescriptionFieldLabel: string;
