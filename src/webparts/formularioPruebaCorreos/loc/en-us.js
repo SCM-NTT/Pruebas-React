@@ -14,6 +14,8 @@ define([], function() {
     "UnknownEnvironment": "The app is running in an unknown environment",
     "checkDefaultMailReciever": "Use default mail",
     "checkShowRemitent": "Show remitent mail",
-    "defaultMailReciever": "Default mail"
+    "defaultMailReciever": "Default mail",
+    "checkDefaultSubject":"Use default subject",
+    "defaultSubject":"Default subject"
   }
 });

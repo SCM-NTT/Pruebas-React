@@ -1,4 +1,6 @@
 declare interface IFormularioPruebaCorreosWebPartStrings {
+  defaultSubject: string;
+  checkDefaultSubject: string;
   checkDefaultMailReciever: string;
   checkShowRemitent: string;
   defaultMailReciever: string | undefined;

@@ -15,7 +15,9 @@ import { IFormularioPruebaCorreosProps } from './components/IFormularioPruebaCor
 
 export interface IFormularioPruebaCorreosWebPartProps {
   defaultMailReciever: string;
+  defaultSubject: string;
   checkDefaultMailReciever: boolean;
+  checkDefaultSubject: boolean;
   checkShowRemitent: boolean;
   description: string;
 }
@@ -35,10 +37,11 @@ export default class FormularioPruebaCorreosWebPart extends BaseClientSideWebPar
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
         userDisplayName: this.context.pageContext.user.displayName,
         graphClient: this.context.msGraphClientFactory.getClient('3'),
-        checkDefaultMailReciever: this.properties.checkDefaultMailReciever,
         checkShowRemitent: this.properties.checkShowRemitent,
+        checkDefaultMailReciever: this.properties.checkDefaultMailReciever,
         defaultMailReciever: this.properties.defaultMailReciever,
-
+        checkDefaultSubject: this.properties.checkDefaultSubject,
+        defaultSubject: this.properties.defaultSubject,
       }
     );
 
@@ -117,17 +120,20 @@ export default class FormularioPruebaCorreosWebPart extends BaseClientSideWebPar
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneCheckbox('checkShowRemitent', {
+                  text: strings.checkShowRemitent
                 }),
                 PropertyPaneCheckbox('checkDefaultMailReciever', {
                   text: strings.checkDefaultMailReciever
                 }),
-                PropertyPaneCheckbox('checkShowRemitent', {
-                  text: strings.checkShowRemitent
-                }),
                 PropertyPaneTextField('defaultMailReciever', {
                   label: strings.defaultMailReciever
+                }),
+                PropertyPaneCheckbox('checkDefaultSubject',{
+                  text: strings.checkDefaultSubject
+                }),
+                PropertyPaneTextField('defaultSubject',{
+                  label: strings.defaultSubject
                 })
               ]
             }

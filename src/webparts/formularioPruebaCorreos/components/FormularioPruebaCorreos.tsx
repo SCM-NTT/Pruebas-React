@@ -4,7 +4,7 @@ import styles from './FormularioPruebaCorreos.module.scss';
 import type { IFormularioPruebaCorreosProps } from './IFormularioPruebaCorreosProps';
 //import { escape } from '@microsoft/sp-lodash-subset';
 
-const useFormularioPruebaCorreos: React.FC<IFormularioPruebaCorreosProps> = ({ graphClient, defaultMailReciever, checkDefaultMailReciever, checkShowRemitent }) => {
+const useFormularioPruebaCorreos: React.FC<IFormularioPruebaCorreosProps> = ({ graphClient, defaultMailReciever, checkDefaultMailReciever, checkShowRemitent, checkDefaultSubject, defaultSubject }) => {
   //variables
 
   const [userMail, setUserMail] = useState<string>('');
@@ -16,9 +16,9 @@ const useFormularioPruebaCorreos: React.FC<IFormularioPruebaCorreosProps> = ({ g
   const [error, setError] = useState<string>('');
   const [ok, setOk] = useState<boolean>(false);
   const [enviar, setEnviar] = useState<boolean>(false);
-  const [useDefaultMail, setUseDefaultMail] = useState<boolean>(checkDefaultMailReciever);
-  const [mostrarRemitente, setMostrarRemitente] = useState<boolean>(checkShowRemitent)
-
+  const [boolDefaultMail, setBoolDefaultMail] = useState<boolean>(checkDefaultMailReciever);
+  const [mostrarRemitente, setMostrarRemitente] = useState<boolean>(checkShowRemitent);
+  const [boolDefaultSubject, setBoolDefaultSubject] =useState<boolean>(checkDefaultSubject);
 
   const mandarCorreo = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault(); // Evita que el formulario recargue la página
@@ -27,25 +27,41 @@ const useFormularioPruebaCorreos: React.FC<IFormularioPruebaCorreosProps> = ({ g
 
   // -_-_-_-_-_-_-_-_-_tratamiento de variables desde webpart-_-_-_-_-_-_-_-_-_-_-_-_
 
-  //se usará mail por defecto?
-  useEffect(() => {
-    setUseDefaultMail(checkDefaultMailReciever);
-  }, [checkDefaultMailReciever]);
-
+  
   //se mostrará el mail del remitente?
   useEffect(() => {
     setMostrarRemitente(checkShowRemitent);
   }, [checkShowRemitent])
+  
+  //se usará mail por defecto?
+  useEffect(() => {
+    setBoolDefaultMail(checkDefaultMailReciever);
+  }, [checkDefaultMailReciever]);
 
   //si se usa mail por defecto lo seteamos, en caso contrario lo vaciamos
   useEffect(() => {
-    if (useDefaultMail) {
+    if (boolDefaultMail) {
       setUserMail(defaultMailReciever);
     }
     else {
       setUserMail("");
     }
-  }, [useDefaultMail, defaultMailReciever]);
+  }, [boolDefaultMail, defaultMailReciever]);
+
+  //se usará asunto por defecto?
+  useEffect(()=>{
+    setBoolDefaultSubject(checkDefaultSubject);
+  },[checkDefaultSubject]);
+
+  //si se usa subject por defecto lo seteamos y en caso contrario lo borramos
+  useEffect(()=>{
+    if(boolDefaultSubject){
+      setAsunto(defaultSubject);
+    }
+    else{
+      setAsunto("");
+    }
+  },[boolDefaultSubject,defaultSubject]);
 
   // -_-_-_-_-_-_-_-_-_tratamiento de variables desde webpart-_-_-_-_-_-_-_-_-_
 
@@ -133,7 +149,7 @@ const useFormularioPruebaCorreos: React.FC<IFormularioPruebaCorreosProps> = ({ g
         subject: asunto,
         body: message
       }).catch((e) => setError(e.target.values || "error desconocido al mandar el mail"));
-      if(!useDefaultMail){
+      if(!boolDefaultMail){
         setUserMail("");
       }
       setAsunto("");
@@ -156,10 +172,10 @@ const useFormularioPruebaCorreos: React.FC<IFormularioPruebaCorreosProps> = ({ g
           </>
         }
         <label><strong>E-Mail de destino: </strong></label>
-        {useDefaultMail&&
+        {boolDefaultMail&&
           <label>{userMail}</label>
         }
-        {!useDefaultMail&&
+        {!boolDefaultMail&&
           <>
             <input
               type='Text'
@@ -167,7 +183,7 @@ const useFormularioPruebaCorreos: React.FC<IFormularioPruebaCorreosProps> = ({ g
               placeholder='A quien se envía el correo'
               value={userMail}
               onChange={(e) => setUserMail(e.target.value)}
-              readOnly={useDefaultMail}
+              readOnly={boolDefaultMail}
               required
               id='email'
             />
@@ -175,15 +191,22 @@ const useFormularioPruebaCorreos: React.FC<IFormularioPruebaCorreosProps> = ({ g
         }
         <br />
         <label>Asunto: </label>
-        <input
-          className={styles.text}
-          type='Text'
-          placeholder='Introduce el asunto de tu mensaje'
-          value={asunto}
-          onChange={(e) => setAsunto(e.target.value)}
-          id='asunto'
-          required
-        />
+        {!boolDefaultSubject&&
+          <>
+            <input
+              className={styles.text}
+              type='Text'
+              placeholder='Introduce el asunto de tu mensaje'
+              value={asunto}
+              onChange={(e) => setAsunto(e.target.value)}
+              id='asunto'
+              required
+            />
+          </>
+        }
+        {boolDefaultSubject&&
+          <label>{asunto}</label>
+        }
         <br />
         <label>Mensaje: </label>
         <br />

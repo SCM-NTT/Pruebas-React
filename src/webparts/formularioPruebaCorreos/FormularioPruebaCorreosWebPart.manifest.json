@@ -24,8 +24,10 @@
     "properties": {
       "description": "FormularioPruebaCorreos",
       "defaultMailReciever":"ejemplo@ejemplo.com",
+      "defaultSubject":"Ejemplo de asunto",
       "checkDefaultMailReciever": true,
-      "checkShowRemitent":true
+      "checkShowRemitent":true,
+      "checkDefaultSubject":true
     }
   }]
 }

@@ -9,4 +9,6 @@ export interface IFormularioPruebaCorreosProps {
   checkDefaultMailReciever: boolean;
   checkShowRemitent:boolean;
   defaultMailReciever:string;
+  checkDefaultSubject:boolean;
+  defaultSubject:string;
 }
